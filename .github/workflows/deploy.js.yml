@@ -38,4 +38,4 @@ jobs:
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         BRANCH: main
-        folder: ./frontend_app/build # The folder the action should deploy.
+        folder:  ./frontend_app/build # The folder the action should deploy.
