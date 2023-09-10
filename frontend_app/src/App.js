@@ -3,7 +3,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      E MARTS CHECK BUILD
+      E MARTS DEPLOYMENT CHECKED 
     </div>
   );
 }
