@@ -3,7 +3,7 @@ import './App.css';
 function App() {
   return (
     <div class="">
-      E MART Check Jenkins Build
+      E MART Check Jenkins Builds
     </div>
   );
 }
