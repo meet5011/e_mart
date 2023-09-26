@@ -13,9 +13,7 @@ export default function RangeSlider() {
     setValue(newValue);
   };
 
-  const scale=(value)=>{
-    return value;
-  }
+ 
 
   return (
     <Box sx={{ width: 200 }} ml={3}>

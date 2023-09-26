@@ -20,8 +20,8 @@ export default function ResponsiveGrid() {
 
     React.useEffect(()=>{
       
-          dispatch(fetchData())
-    },[])
+  dispatch(fetchData()) // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[]) 
    
 
   return (
