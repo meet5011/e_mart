@@ -21,7 +21,7 @@ export default function ResponsiveGrid() {
     React.useEffect(()=>{
       
           dispatch(fetchData())
-    })
+    },[])
    
 
   return (

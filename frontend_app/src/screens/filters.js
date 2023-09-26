@@ -1,4 +1,4 @@
-import {Box, Checkbox, Grid, ListItem, ListItemButton, ListItemIcon, ListItemText, Rating, Slider, Typography } from "@mui/material";
+import {Grid, ListItem, ListItemButton, ListItemIcon,Rating } from "@mui/material";
 import { useState } from "react";
 import Button from '@mui/joy/Button';
 import {useDispatch} from "react-redux"
@@ -18,10 +18,9 @@ function Filter() {
     color: theme.palette.text.secondary,
   }));
 
-  const [checked,setChecked] = useState(false);
+
   const [checkedIndex,setCheckedIndex] = useState([]);
-  const [rating,setRating] = useState();
-  const[filters,setFilters] = useState([]);
+ 
   const dispatch = useDispatch();
 
   const handleCheck = (e,index) =>{
@@ -30,15 +29,13 @@ function Filter() {
     //console.log(e.target.checked);
    if(!checked){
    const filtered = checkedIndex.filter((s)=>{
-      console.log(s,"s");
-      console.log(index ,"index");
        return s.rating !== (5-index);
     })
     setCheckedIndex(filtered);
     
    }else{
     checkedIndex.push({rating:5-index});
-    console.log(checkedIndex, "add");
+    
    }
   
    
@@ -46,14 +43,17 @@ function Filter() {
   }
 
   const handleApply = () =>{
-    dispatch(filterByRate(checkedIndex));
+   
+      dispatch(filterByRate(checkedIndex));
+   
+    
   }
  
     return (
      
       <div>
     <Item>FILTERS</Item>
-   {console.log(checkedIndex, "remove")}
+  
     {[5,4,3,2,1].map((s,index)=>{
 
         return <Grid container >

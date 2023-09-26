@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, current, nanoid } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 
 const dataSlice = createSlice({
     name:"products",
@@ -7,33 +7,37 @@ const dataSlice = createSlice({
         product:[],
         isLoading:true,
         filteredProducts:[],
-        filterByRating:[]
+        filterByRating:[],
+        filters:{
+            text:false,
+            rating:false
+        }
        },
         
     },
     reducers:{
         filter:(state,action)=>{
-            console.log(action.payload);
+            
            state.products.product = state.products.filteredProducts.filter((s)=>{
             return s.title.toLowerCase().includes(action.payload.toLowerCase());
            })
         },
         filterByRate :(state,action)=>{
-            console.log(action.payload);
-        action.payload.map((s)=>{
-            console.log(s);
-            if(s.length !==0){
-                state.products.product = state.products.filterByRating.filter((item)=>{
-                    
-                     return Math.round(item.rating.rate) === s.rating
-                 })  
-            }else{
-                state.products.product = state.products.filterByRating; 
-                return state.products.product;
-            }
-            
+           // console.log(action.payload);
+           // console.log(action.payload);
+        let rating = action.payload.map((s)=>{
+            return s.rating;
         })
-           
+      if(action.payload.length === 0){
+        state.products.product = state.products.filterByRating;
+         
+      }else{
+        state.products.product = state.products.filteredProducts.filter((item)=>{
+            return  rating.includes(Math.round(item.rating.rate));
+          })
+      }
+    
+        
             
         }
     },
