@@ -1,13 +1,9 @@
 import PrimarySearchAppBar from "../components/app_bar";
 import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import { useEffect, useState } from "react";
+
 import { styled } from '@mui/material/styles';
-import IconButton from '@mui/material/IconButton';
+
 import ResponsiveGrid from "../components/grid";
-import Product from "../components/grid";
-import YouTube from "../components/skeleton";
-import { Button, Skeleton } from "@mui/material";
 import Paper from '@mui/material/Paper';
 import Filter from "./filters";
 

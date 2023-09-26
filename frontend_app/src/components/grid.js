@@ -1,18 +1,14 @@
 import * as React from 'react';
-import { styled } from '@mui/joy/styles';
-import Sheet from '@mui/joy/Sheet';
 import Grid from '@mui/joy/Grid';
 import {useDispatch, useSelector} from "react-redux";
 import { fetchData } from '../slices/dataSlice';
 import Card from '@mui/joy/Card';
 import CardContent from '@mui/joy/CardContent';
-import IconButton from '@mui/joy/IconButton';
 import Typography from '@mui/joy/Typography';
-import BookmarkAdd from '@mui/icons-material/BookmarkAddOutlined';
 import Rating from '@mui/material/Rating';
 import FavoriteSharpIcon from '@mui/icons-material/FavoriteSharp';
 import AspectRatio from '@mui/joy/AspectRatio';
-import { Box, Skeleton } from '@mui/material';
+import {Skeleton } from '@mui/material';
 
 
 
@@ -23,11 +19,9 @@ export default function ResponsiveGrid() {
     const dispatch = useDispatch();
 
     React.useEffect(()=>{
-       // setTimeout(()=>{
+      
           dispatch(fetchData())
-          
-       // },200)
-    },[])
+    })
    
 
   return (

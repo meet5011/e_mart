@@ -15,7 +15,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { filter } from '../slices/dataSlice';
 
 const Search = styled('div')(({ theme }) => ({
