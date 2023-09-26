@@ -45,8 +45,8 @@ export default function ResponsiveGrid() {
      <Grid md={3}  display="flex">
       
        <Card sx={{ width: 350, minHeight:"500px", maxHeight:"520px", mx:"10px" }} >
-         <div style={{display:"flex", justifyContent:"center",textAlign:"justify",height:"100px"}}>
-           <h1 style={{color:"black",fontWeight:"500"}}>{s.title}</h1>
+         <div style={{display:"flex", justifyContent:"center",textAlign:"justify",height:"100vh"}}>
+           <div style={{color:"black",fontWeight:"500"}}>{s.title}</div>
          </div>
          <Typography fontSize="" fontWeight="lg">
            views: {s.rating.count}
