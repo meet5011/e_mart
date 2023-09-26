@@ -2,7 +2,6 @@ import * as React from 'react';
 import { styled } from '@mui/joy/styles';
 import Sheet from '@mui/joy/Sheet';
 import Grid from '@mui/joy/Grid';
-import BasicCard from './basicard';
 import {useDispatch, useSelector} from "react-redux";
 import { fetchData } from '../slices/dataSlice';
 import Card from '@mui/joy/Card';

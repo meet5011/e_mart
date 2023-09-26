@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import ResponsiveGrid from "../components/grid";
-import BasicCard from "../components/basicard";
 import Product from "../components/grid";
 import YouTube from "../components/skeleton";
 import { Button, Skeleton } from "@mui/material";
