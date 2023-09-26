@@ -7,7 +7,7 @@ function App() {
     <div class="">
      <BrowserRouter>
      <Routes>
-      <Route exact path='/' element={<Home />} />
+      <Route exact path='/e_mart' element={<Home />} />
      </Routes>
      </BrowserRouter>
     </div>
