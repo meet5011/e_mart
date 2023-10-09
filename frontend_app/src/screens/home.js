@@ -20,7 +20,7 @@ export default function Home(){
 
     return(
         <>
-        <PrimarySearchAppBar style={{position:"fixed"}} />
+        <PrimarySearchAppBar  />
         <Grid container >
         <Grid xs={2} >
         

@@ -30,6 +30,9 @@ export default function ResponsiveGrid() {
       spacing={{ xs: 0, md: 1 }}
       //columns={{ xs: 2, sm: 6, md: 12 }}
      sx={{ flexGrow: 1 }}
+     marginTop={8}
+   
+     
     
     >
     
@@ -44,9 +47,10 @@ export default function ResponsiveGrid() {
     
      <Grid md={3}  display="flex">
       
-       <Card sx={{ width: 350, minHeight:"500px", maxHeight:"520px", mx:"10px" }} >
+       <Card sx={{ width: 350, minHeight:"500px", maxHeight:"570px", mx:"5px" }} >
          <div style={{display:"flex", justifyContent:"center",textAlign:"justify",height:"100vh"}}>
-           <div style={{color:"black",fontWeight:"500"}}>{s.title}</div>
+           <div style={{color:"black",fontWeight:"500"}}>{s.title} </div>
+           
          </div>
          <Typography fontSize="" fontWeight="lg">
            views: {s.rating.count}
@@ -73,7 +77,7 @@ export default function ResponsiveGrid() {
            <Typography fontSize="lg" fontWeight="lg" >
               ${s.price}
              </Typography>
-          
+             
            </div>
            
             

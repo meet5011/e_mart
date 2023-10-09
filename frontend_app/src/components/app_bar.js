@@ -16,7 +16,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { useDispatch} from 'react-redux';
-import { filter } from '../slices/dataSlice';
+import { filter, searchFilter } from '../slices/dataSlice';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -91,7 +91,7 @@ export default function PrimarySearchAppBar() {
   const handleKey = (e) =>{
    if(e.key === "Enter"){
    
-      dispatch(filter(search))
+      dispatch(searchFilter(search))
    
   }
 }
@@ -172,7 +172,7 @@ export default function PrimarySearchAppBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar >
         <Toolbar>
           <IconButton
             size="large"
