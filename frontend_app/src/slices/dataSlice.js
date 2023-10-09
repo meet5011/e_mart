@@ -1,5 +1,4 @@
-import { Rating } from "@mui/material";
-import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 
 const dataSlice = createSlice({
   name: "products",
@@ -28,7 +27,7 @@ const dataSlice = createSlice({
       //console.log(action.payload);
       let PRICE = action.payload[0].hasOwnProperty("price");
       let RATINGS = action.payload[0].hasOwnProperty("rating");
-      let both = action.payload.length >= 2 && PRICE;
+     // let both = action.payload.length >= 2 && PRICE;
     //  console.log(RATINGS, "ratings");
       let rating = action.payload.map((s) => {
         

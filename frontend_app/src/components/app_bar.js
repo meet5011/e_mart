@@ -16,7 +16,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { useDispatch} from 'react-redux';
-import { filter, searchFilter } from '../slices/dataSlice';
+import { searchFilter } from '../slices/dataSlice';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',

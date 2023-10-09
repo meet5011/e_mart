@@ -2,9 +2,6 @@ import Box from '@mui/joy/Box';
 import Slider from '@mui/joy/Slider';
 import * as React from 'react';
 
-function valueText(value) {
-  return `${value}°C`;
-}
 
 export default function RangeSlider(props) {
   const [value, setValue] = React.useState([0, 0]);
