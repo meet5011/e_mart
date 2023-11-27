@@ -86,15 +86,20 @@ export default function PrimarySearchAppBar() {
 
   const handleSearch = (e) =>{
       setSearch(e.target.value);
+     // dispatch(searchFilter(search))
   }
 
-  const handleKey = (e) =>{
-   if(e.key === "Enter"){
+  React.useEffect(()=>{
+    dispatch(searchFilter(search)); // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[search]) 
+
+  // const handleKey = (e) =>{
+  //  if(e.key === "Enter"){
    
-      dispatch(searchFilter(search))
+  //     dispatch(searchFilter(search))
    
-  }
-}
+  // }
+//}
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
@@ -200,7 +205,7 @@ export default function PrimarySearchAppBar() {
               inputProps={{ 'aria-label': 'search' }}
               onChange={(e)=>handleSearch(e)}
               value={search}
-              onKeyDown={(e)=>handleKey(e)}
+              //onKeyDown={(e)=>handleKey(e)}
             />
           </Search>
           <Box sx={{ flexGrow: 1 }} />

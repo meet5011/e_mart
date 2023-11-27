@@ -5,14 +5,12 @@ import {
   ListItemIcon,
   Rating,
 } from "@mui/material";
-import {useState } from "react";
-import Button from "@mui/joy/Button";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { categoryFilter, filterByRate, noFilter } from "../slices/dataSlice";
+import { filterApply } from "../slices/dataSlice";
 import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
 import RangeSlider from "../components/slider";
-import ListItemText from "@mui/material/ListItemText";
 
 function Filter() {
   const Item = styled(Paper)(({ theme }) => ({
@@ -23,80 +21,73 @@ function Filter() {
     color: theme.palette.text.secondary,
   }));
 
-  const [checkedIndex, setCheckedIndex] = useState([]);
-  const [value, setValue] = useState([]);
-  const [selectCategoryIndex, setSelectCategoryIndex] = useState([]);
-
+  // const filters = useSelector((state)=>state.data.products.filters)
+  const [filters, setFilters] = useState(
+    useSelector((state) => state.data.products.filters)
+  );
+  const dispatch = useDispatch();
   const categories = useSelector((state) => state.data.products.categories);
   //console.log(categories, "categories");
 
   const handelValue = (data) => {
     // console.log(data);
-    setValue(data.value);
-    if (checkedIndex.length !== 0) {
-      checkedIndex[0].price = value;
-      setCheckedIndex(checkedIndex);
-     // console.log(checkedIndex,"not empty");
-      
-    } else {
-     // checkedIndex.push({ price: data.value });
-      setCheckedIndex([...checkedIndex,{price:data.value}]);
-     // console.log(checkedIndex,"empty");
-    }
-    // console.log(checkedIndex);
+    setFilters({ ...filters, price: data.value });
   };
 
   let props = {
     data: handelValue,
   };
 
-  const dispatch = useDispatch();
-
-  const handleCheck = (e, index) => {
-    const { checked } = e.target;
-    if (!checked) {
-      const filtered = checkedIndex.filter((s) => {
-        return s.rating !== 5 - index;
-      });
-      setCheckedIndex(filtered);
-    } else{
-     setCheckedIndex([...checkedIndex,{rating:5-index}])
-    }
-  };
-
-  const handleApply = () => {
-    console.log(checkedIndex);
-    if (checkedIndex.length === 0) {
-      dispatch(noFilter(checkedIndex));
-    }
-    if (selectCategoryIndex.length !== 0) {
-      dispatch(categoryFilter(selectCategoryIndex));
-    } else if (checkedIndex.length !== 0) {
-      dispatch(filterByRate(checkedIndex));
-    }
-  };
-
-  const handleColor = (index) => {
-    // setSelectCategoryIndex((prevState)=>(
-
-    //   {
-    //     ...selectCategoryIndex,
-    //     [index] :!prevState[index]
-    //   }
-
-    // )
-
-    // )
-    if (!selectCategoryIndex.includes(categories[index].toLowerCase())) {
-      setSelectCategoryIndex([...selectCategoryIndex, categories[index]]);
+  const handleRate = (e, item) => {
+    if (e.target.checked) {
+      console.log(filters.rate);
+      //console.log("yes");
+      //console.log(filters.rating.length == 0);
+      !filters.rate
+        ? setFilters({
+            ...filters,
+            rate: [...[], item],
+            //price:[...filters.price]
+          })
+        : //filters.rate.push(item);
+          setFilters({
+            ...filters,
+            rate: [...filters.rate, item],
+            //price:[...filters.price]
+          });
     } else {
-      setSelectCategoryIndex(
-        selectCategoryIndex.filter((item) => {
-          return item !== categories[index].toLowerCase();
-        })
-      );
+      console.log("no");
+      setFilters({
+        ...filters,
+        rate: [...filters.rate].filter((s, i) => {
+          return s !== item;
+        }),
+      });
     }
   };
+
+  const handleCategory = (e, item) => {
+    console.log(filters.category);
+    if (e.target.checked) {
+      !filters.category
+        ? setFilters({
+            ...filters,
+            category: [...[], item],
+          })
+        : setFilters({ ...filters, category: [...filters.category, item] });
+    } else {
+      setFilters({
+        ...filters,
+        category: [...filters.category].filter((s, i) => {
+          return s !== item;
+        }),
+      });
+    }
+  };
+
+  useEffect(() => {
+    dispatch(filterApply(filters)); //eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filters]);
 
   return (
     <div style={{ marginTop: "65px" }}>
@@ -116,7 +107,7 @@ function Filter() {
                       // disableRipple
                       // inputProps={{ 'aria-labelledby': 1 }}
                       key={index}
-                      onChange={(e) => handleCheck(e, index)}
+                      onChange={(e) => handleRate(e, s)}
                     />
                   </ListItemIcon>
                   {/* <ListItemText  primary={`Line item + 1}`} /> */}
@@ -126,7 +117,7 @@ function Filter() {
             </Grid>
           );
         })}
-        <Grid
+        {/* <Grid
           style={{
             display: "flex",
             justifyContent: "center",
@@ -141,7 +132,7 @@ function Filter() {
           >
             APPLY
           </Button>
-        </Grid>
+        </Grid> */}
         <Grid>
           <RangeSlider {...props} />
         </Grid>
@@ -151,16 +142,14 @@ function Filter() {
             return (
               <>
                 <ListItem style={{ cursor: "pointer" }} dense>
-                  <ListItemText
-                    onClick={() => handleColor(index)}
-                    id="category"
-                    primary={item.toUpperCase()}
-                    style={
-                      selectCategoryIndex.includes(categories[index])
-                        ? { color: "blue" }
-                        : { color: "black" }
-                    }
-                  />
+                  <ListItemIcon>
+                    <input
+                      onClick={(e) => handleCategory(e, item)}
+                      id="category"
+                      type="checkbox"
+                    />
+                  </ListItemIcon>
+                  {item.toUpperCase()}
                 </ListItem>
               </>
             );

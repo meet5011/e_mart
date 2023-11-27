@@ -2,10 +2,10 @@ import PrimarySearchAppBar from "../components/app_bar";
 import Grid from '@mui/material/Grid';
 
 import { styled } from '@mui/material/styles';
-
 import ResponsiveGrid from "../components/grid";
 import Paper from '@mui/material/Paper';
 import Filter from "./filters";
+
 
 export default function Home(){
 
@@ -16,11 +16,14 @@ export default function Home(){
         textAlign: 'center',
         color: theme.palette.text.secondary,
       }));
+
+     
    
 
     return(
         <>
         <PrimarySearchAppBar  />
+        
         <Grid container >
         <Grid xs={2} >
         
@@ -28,8 +31,10 @@ export default function Home(){
          <Filter />
         </Grid>
         <Grid xs={10}>
-          <Item>
-            <ResponsiveGrid />
+         
+          <Item style={{marginTop : "65px"}}>
+            
+            <ResponsiveGrid  />
           </Item>
         </Grid>
       </Grid>
